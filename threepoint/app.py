@@ -24,19 +24,15 @@ def database():
                                 id integer primary key autoincrement,
                                 name text,
                             )""")
-
-        palabras = ['hola','perro','gato']
-
-        cursor = conexion.cursor()
-        cursor.executemany('INSERT INTO palabra VALUES(?,?,?);',palabras);
-    
-       
-        conexion.commit()    
+        conexion.commit()  
 
     except sqlite3.OperationalError:
         pass
-        #print("La tabla gamer ya existe")   
+        #print("La tabla gamer ya existe")  
 
+    palabras = ['hola','perro','gato']
+    cursor = conexion.cursor()
+    cursor.executemany('INSERT INTO palabras VALUES(?,?,?);',palabras)
     conexion.execute("INSERT OR IGNORE INTO gamer(id,name,score) values (?,?,?)", (1,"Player 1",0))
     conexion.commit() 
 
