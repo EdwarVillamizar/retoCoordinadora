@@ -1,6 +1,3 @@
-from operator import le
-
-
 def primerMenu():
 
     while True:
@@ -69,13 +66,9 @@ def tercerMenu(data):
         print(end= "\n")
 
         if option == "1": opcionUno(sumarProduccion(data))
-
         if option == "2": opcionDos(sumarProduccion(data))
-
         if option == "3": opcionTres(data)
-
         if option == "4": opcionCuatro(data)
-
         if option == "5": break
 
 
@@ -170,11 +163,3 @@ if __name__ == "__main__":
             tercerMenu(litrosLeche)
 
         if option == "3": break
-
-    
-
-    
-    
-
-
-    
