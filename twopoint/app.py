@@ -27,8 +27,7 @@ def segundoMenu(numeroVacas):
         mtr=list()
 
         for i in range(7):
-
-            for j in range(0,numeroVacas):
+            for j in range(numeroVacas):
 
                 while True:
 
@@ -53,42 +52,129 @@ def segundoMenu(numeroVacas):
     return mtr
 
 
-def tercerMenu():
+def tercerMenu(data):
 
     while True:
 
-        print ("1. Produccion Total")
-        print ("2. mayor menor")
-        print ("3. numero de")
-        print ("4. Salir")
+        print(end= "\n")
 
-        option = input('Ingrese Opcion')
+        print ("1. La producción total de leche del hato en cada uno de los sietes días.")
+        print ("2. El día de la semana con mayor y menor producción.")
+        print ("3. El número de la vaca que dio más leche en cada día.")
+        print ("4. Visualizar Datos")
+        print ("5. Regresar al Menu Principal")
 
-        if option == "1": break
+        print(end= "\n")
+        option = input('Ingrese Opcion: ')
+        print(end= "\n")
 
-        if option == "2": break
+        if option == "1": opcionUno(sumarProduccion(data))
 
-        if option == "3": break
+        if option == "2": opcionDos(sumarProduccion(data))
 
-        if option == "4": break
+        if option == "3": opcionTres(data)
+
+        if option == "4": opcionCuatro(data)
+
+        if option == "5": break
 
 
 def sumarProduccion(mtr):
 
     fil,col = len(mtr),len(mtr[0])
+    lst=list()
 
-    print(fil)
-    print(col)
+    for i in range(fil):
+        lst.append(sum(mtr[i]))
 
+    return lst
+
+
+def opcionUno(lst):
+
+    for i in range(len(lst)):
+        print("Dia "+ str(i+1) +": "+ str(lst[i]))
+    print(end= "\n")
+    input('Presione cuaquier tecla para continuar')
+    print(end= "\n")
+    print(end= "\n")
+
+
+def opcionDos(lst):
+
+    print("Mayor Produccion: Dia " + str(lst.index(max(lst)) + 1))
+    print("Menor Produccion: Dia " + str(lst.index(min(lst)) + 1))
+    print(end= "\n")
+    input('Presione cuaquier tecla para continuar')
+    print(end= "\n")
+    print(end= "\n")
+
+
+def opcionTres(mtr):
+    
+    fil,col = len(mtr),len(mtr[0])
+    for i in range(fil):
+
+        print("Dia "+str(i+1)+": ",end= " ")
+
+        for j in range(col): 
+            if max(mtr[i]) == mtr[i][j]: 
+                print("Vaca "+str(j+1),end= " ")
+
+        print(end= "\n")
+    print(end= "\n")
+    input('Presione cuaquier tecla para continuar')
+    print(end= "\n")
+    print(end= "\n")
+                
+
+def opcionCuatro(mtr):
+
+    fil,col = len(mtr),len(mtr[0])
+
+    for i in range(fil):
+        print("Dia "+str(i+1)+": ",end= " ")
+        for j in range(col): 
+            print(mtr[i][j],end= " ")
+        print(end= "\n")
+
+    print(end= "\n")
+    input('Presione cuaquier tecla para continuar')
+    print(end= "\n")
+    print(end= "\n")
 
 if __name__ == "__main__":
 
-    #numeroVacas = primerMenu()
-    #litrosLeche = segundoMenu(numeroVacas)
+    while True:
 
-    litrosLeche=[[3,4,2,3,4],[2,3,4,5,5],[3,2,2,1,2],[1,1,1,1,1],[2,3,5,2,2],[4,3,4,5,1],[2,2,2,2,2]]
+        print(end= "\n")
 
-    sumarProduccion(litrosLeche)
+        print ("1. Datos Nuevos")
+        print ("2. Datos de Prueba")
+        print ("3. Salir")
+
+        print(end= "\n")
+        option = input('Ingrese Opcion: ')
+        print(end= "\n")
+
+        if option == "1": 
+
+            numeroVacas = primerMenu()
+            litrosLeche = segundoMenu(numeroVacas)
+            tercerMenu(litrosLeche)
+            
+
+        if option == "2": 
+            
+            litrosLeche=[[3,4,2,3,4],[2,3,4,5,5],[3,2,2,1,2],[1,1,1,1,1],[2,3,5,2,2],[4,3,4,5,1],[2,2,2,2,2]]
+            tercerMenu(litrosLeche)
+
+        if option == "3": break
+
+    
+
+    
+    
 
 
     
